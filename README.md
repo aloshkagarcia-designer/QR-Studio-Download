@@ -4,7 +4,12 @@
 Colores, logotipo, marcos y descargas en PNG, SVG y PDF listas para imprimir. Cada archivo se comprueba automáticamente antes
 de descargarlo, para que siempre se pueda leer.
 
-![QR Studio: pantalla para crear un código QR](assets/generador.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/generador-oscuro.png">
+  <img src="assets/generador.png" alt="QR Studio: pantalla para crear un código QR">
+</picture>
+
+QR Studio se adapta solo al **modo claro u oscuro** de tu computadora.
 
 ---
 
@@ -132,7 +137,10 @@ verificar…»**.
 | **Guardar y organizar** | Ponle nombre y proyecto y pulsa **Guardar en biblioteca**. Lo encontrarás en **Biblioteca**. |
 | **Copia de seguridad** | **Configuración → Descargar copia.** Guárdala en un disco externo o en tu nube. |
 
-![Biblioteca de códigos organizada por proyecto](assets/biblioteca.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/biblioteca-oscuro.png">
+  <img src="assets/biblioteca.png" alt="Biblioteca de códigos organizada por proyecto">
+</picture>
 
 ### Qué puedes crear
 
@@ -142,7 +150,7 @@ verificar…»**.
 - **Diseño:** colores de tu marca, módulos cuadrados, redondeados o en puntos, logotipo, marco con
   texto («Escanéame») y versión **blanca sin fondo** para fondos oscuros.
 
-![Modo oscuro y código blanco sin fondo](assets/modo-oscuro.png)
+![Código blanco sin fondo para colocar sobre fondos oscuros](assets/modo-oscuro.png)
 
 ---
 
