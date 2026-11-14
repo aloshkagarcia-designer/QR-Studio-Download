@@ -1,0 +1,39 @@
+# Crea la publicación (Release) de cada versión a partir del ZIP guardado en descargas/.
+# El ZIP se construye, prueba y audita en Windows en el repositorio privado de QR Studio.
+name: Publicar versión
+
+on:
+  push:
+    branches: [main]
+    paths: ["descargas/*.zip", "notas/*.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Comprobar el ZIP con su suma SHA-256
+        run: cd descargas && sha256sum -c *.sha256
+
+      - name: Crear la publicación si aún no existe
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for zip in descargas/QR-Studio-*-Windows.zip; do
+            version=$(basename "$zip" | sed -E 's/QR-Studio-(.+)-Windows\.zip/\1/')
+            tag="v$version"
+            if gh release view "$tag" >/dev/null 2>&1; then
+              echo "La versión $tag ya está publicada."
+              continue
+            fi
+            cp "$zip" QR-Studio-Windows.zip
+            notes="notas/$version.md"
+            [ -f "$notes" ] || notes=/dev/null
+            gh release create "$tag" QR-Studio-Windows.zip "$zip" "$zip.sha256" \
+              --title "QR Studio $version" --notes-file "$notes" --latest
+          done
