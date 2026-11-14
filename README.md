@@ -9,7 +9,8 @@ de descargarlo, para que siempre se pueda leer.
   <img src="assets/generador.png" alt="QR Studio: pantalla para crear un código QR">
 </picture>
 
-QR Studio se adapta solo al **modo claro u oscuro** de tu computadora.
+QR Studio se adapta solo al **modo claro u oscuro** de tu computadora, y puedes elegir el que
+prefieras con el selector ☀️ / 🌙 (abajo a la izquierda).
 
 ---
 
@@ -136,6 +137,7 @@ verificar…»**.
 | **Descargar** | Elige **PNG**, **SVG** o **PDF** y pulsa **Descargar**. Si el diseño no se pudiera leer, QR Studio no deja descargarlo y te dice qué cambiar. |
 | **Guardar y organizar** | Ponle nombre y proyecto y pulsa **Guardar en biblioteca**. Lo encontrarás en **Biblioteca**. |
 | **Copia de seguridad** | **Configuración → Descargar copia.** Guárdala en un disco externo o en tu nube. |
+| **Modo claro u oscuro** | Usa el selector de abajo a la izquierda: ☀️ claro, 🌙 oscuro o 🖥️ automático (como tu computadora). Se recuerda tu elección. |
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/biblioteca-oscuro.png">
