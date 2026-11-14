@@ -1,0 +1,74 @@
+# Analiza con antivirus lo que realmente descarga la gente: los archivos de la última publicación,
+# descargados igual que desde los botones de esta página.
+#   - Microsoft Defender (el antivirus de Windows), en un equipo Windows: versión de Windows.
+#   - ClamAV (antivirus independiente), en Linux: versiones de Windows y Mac.
+# Se ejecuta al publicar una versión, cada lunes con firmas de virus actualizadas, y a mano
+# desde la pestaña Actions.
+name: Antivirus de las descargas
+
+on:
+  workflow_run:
+    workflows: ["Publicar versión"]
+    types: [completed]
+  schedule:
+    - cron: "17 9 * * 1"  # cada lunes, 09:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  BASE: https://github.com/aloshkagarcia-designer/QR-Studio-Download/releases/latest/download
+
+jobs:
+  defender:
+    name: Microsoft Defender (Windows)
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Descargar como lo haría una persona
+        run: |
+          New-Item -ItemType Directory publicado | Out-Null
+          Invoke-WebRequest "$env:BASE/QR-Studio-Windows.zip" -OutFile publicado/QR-Studio-Windows.zip
+          Get-Item publicado/QR-Studio-Windows.zip | Select-Object Name, Length | Format-Table | Out-Host
+          (Get-FileHash publicado/QR-Studio-Windows.zip -Algorithm SHA256).Hash.ToLower() | Out-Host
+      - name: Actualizar firmas y analizar
+        run: |
+          Expand-Archive publicado/QR-Studio-Windows.zip -DestinationPath analizar
+          $mp = Join-Path $env:ProgramFiles "Windows Defender\MpCmdRun.exe"
+          & $mp -SignatureUpdate | Out-Host
+          Get-MpComputerStatus | Select-Object AMServiceEnabled, AntivirusEnabled, AntivirusSignatureVersion, AntivirusSignatureLastUpdated | Format-List | Out-Host
+          & $mp -Scan -ScanType 3 -File "$PWD\analizar" -DisableRemediation | Out-Host
+          $a = $LASTEXITCODE
+          & $mp -Scan -ScanType 3 -File "$PWD\publicado\QR-Studio-Windows.zip" -DisableRemediation | Out-Host
+          $b = $LASTEXITCODE
+          "Códigos de resultado: carpeta=$a zip=$b (0 = sin amenazas)"
+          if ($a -ne 0 -or $b -ne 0) { throw "Microsoft Defender detectó una amenaza o no pudo analizar" }
+          "Microsoft Defender: sin amenazas en QR Studio para Windows"
+
+  clamav:
+    name: ClamAV (Windows y Mac)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar como lo haría una persona y verificar
+        run: |
+          mkdir publicado && cd publicado
+          for p in Windows Mac; do curl -sSfL -o "QR-Studio-$p.zip" "$BASE/QR-Studio-$p.zip"; done
+          ls -la
+          sha256sum QR-Studio-*.zip
+      - name: Instalar ClamAV y actualizar firmas
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq clamav clamav-freshclam
+          sudo systemctl stop clamav-freshclam || true
+          for i in 1 2 3; do sudo freshclam --stdout && break; sleep 30; done
+          clamscan --version
+      - name: Analizar
+        run: |
+          mkdir -p analizar/windows analizar/mac
+          unzip -q publicado/QR-Studio-Windows.zip -d analizar/windows
+          unzip -q publicado/QR-Studio-Mac.zip -d analizar/mac
+          clamscan -r --infected --scan-archive=yes publicado analizar
+          echo "ClamAV: sin amenazas en las descargas de Windows y Mac"
