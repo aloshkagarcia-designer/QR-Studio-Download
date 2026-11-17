@@ -1,0 +1,1 @@
+var e=new URL(`pdf.worker.min-Cpi8b8z3.mjs`,import.meta.url).href;export{e as default};
