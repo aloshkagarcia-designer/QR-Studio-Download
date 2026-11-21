@@ -23,13 +23,15 @@
         if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t)
       } catch (e) {}
     </script>
-    <script type="module" crossorigin src="./assets/index-D40SHPvm.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-D_9fy-yi.css">
+    <script type="module" crossorigin src="./assets/index-q4RTtWBk.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-XKyaHtl9.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-DRtiy42S.css">
   </head>
   <body>
     <div id="root"></div>
     <script>
-      if ('serviceWorker' in navigator) addEventListener('load', function () { navigator.serviceWorker.register('./sw.js') })
+      // En las apps nativas los archivos ya vienen dentro de la app: no hace falta.
+      if ('serviceWorker' in navigator && !window.Capacitor) addEventListener('load', function () { navigator.serviceWorker.register('./sw.js') })
     </script>
   </body>
 </html>
