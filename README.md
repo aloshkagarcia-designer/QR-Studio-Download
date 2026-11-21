@@ -48,7 +48,7 @@ anteriores: [todas las versiones](https://github.com/aloshkagarcia-designer/QR-S
 | | Android | iPhone |
 |---|---|---|
 | **Sistema** | Android 7 o posterior | iOS 15 o posterior |
-| **Archivo** | `QR-Studio-Android.apk` | `QR-Studio-iPhone.ipa` (se instala desde una computadora) |
+| **Cómo** | archivo `QR-Studio-Android.apk` | desde Safari, o archivo `QR-Studio-iPhone.ipa` con una computadora |
 | **Internet** | no hace falta | no hace falta |
 | **Precio** | gratis | gratis |
 
@@ -110,8 +110,20 @@ No hay que instalar nada más: todo lo necesario va dentro del archivo.
 
 ### En iPhone
 
-Apple solo permite instalar apps de la App Store. Mientras QR Studio llega a la App Store, se puede
-instalar **desde una computadora** con el programa gratuito **Sideloadly**, usando tu Apple ID:
+Hay dos formas. **La más fácil es la primera:** no necesita computadora ni caduca.
+
+**Opción 1 · Desde Safari (recomendada, 1 minuto)**
+
+1. En el iPhone, abre **Safari** (tiene que ser Safari) y entra en
+   **[aloshkagarcia-designer.github.io/QR-Studio-Download/app](https://aloshkagarcia-designer.github.io/QR-Studio-Download/app/)**.
+2. Toca **Compartir** (el cuadrado con la flecha ↑).
+3. Elige **«Añadir a pantalla de inicio»** → **Añadir**.
+4. Listo: aparece el icono de QR Studio. Se abre a pantalla completa, como cualquier app, y
+   **funciona sin internet** después de la primera vez.
+
+**Opción 2 · Con el archivo `.ipa` desde una computadora**
+
+Para tenerla como app instalada, con el programa gratuito **Sideloadly** y tu Apple ID:
 
 1. En tu computadora (Windows o Mac), descarga **Sideloadly** desde
    [sideloadly.io](https://sideloadly.io). En Windows también necesitas **iTunes** e **iCloud**
@@ -124,7 +136,7 @@ instalar **desde una computadora** con el programa gratuito **Sideloadly**, usan
 6. Si iOS lo pide: **Ajustes → Privacidad y seguridad → Modo de desarrollador** → actívalo y
    reinicia el iPhone.
 
-> ⏱️ **Importante:** con un Apple ID gratuito, Apple desactiva la app **cada 7 días**. Para
+> ⏱️ **Importante (opción 2):** con un Apple ID gratuito, Apple desactiva la app **cada 7 días**. Para
 > renovarla, conecta el iPhone y repite el paso 4 (tus códigos no se pierden). Haz de vez en cuando
 > **Ajustes → Descargar copia** en la app, por si acaso.
 
@@ -242,9 +254,9 @@ Sí: hay versión para **Android** y para **iPhone** (mira [En Android](#en-andr
 [En iPhone](#en-iphone)). Tus códigos se guardan solo en el teléfono; para pasarlos a otro, usa
 **Ajustes → Descargar copia** y recupérala en el teléfono nuevo.
 
-**¿Por qué en iPhone hay que renovarla cada 7 días?**
+**¿Por qué en iPhone, con el archivo `.ipa`, hay que renovarla cada 7 días?**
 Porque Apple solo permite apps permanentes si vienen de la App Store. Con Sideloadly y un Apple ID
-gratuito, Apple las desactiva a los 7 días; se renueva en un minuto conectando el iPhone.
+gratuito, Apple las desactiva a los 7 días. Si no quieres renovarla, usa la **opción 1 (Safari)**: no caduca.
 
 **La ventana dice que otro programa usa el puerto.**
 Reinicia la computadora y abre QR Studio de nuevo.
