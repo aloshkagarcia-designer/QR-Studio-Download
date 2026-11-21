@@ -1,6 +1,6 @@
 # QR Studio
 
-**Crea códigos QR profesionales con el estilo de tu marca.** Para **Windows** y **Mac**.
+**Crea códigos QR profesionales con el estilo de tu marca.** Para **Windows**, **Mac**, **Android** y **iPhone**.
 Colores, logotipo, marcos y descargas en PNG, SVG y PDF listas para imprimir. Cada archivo se comprueba automáticamente antes
 de descargarlo, para que siempre se pueda leer.
 
@@ -20,11 +20,17 @@ prefieras con el selector ☀️ / 🌙 (abajo a la izquierda).
 
 ### [⬇️ Descargar para Mac](https://github.com/aloshkagarcia-designer/QR-Studio-Download/releases/latest/download/QR-Studio-Mac.zip)
 
+### [⬇️ Descargar para Android](https://github.com/aloshkagarcia-designer/QR-Studio-Download/releases/latest/download/QR-Studio-Android.apk)
+
+### [⬇️ Descargar para iPhone](https://github.com/aloshkagarcia-designer/QR-Studio-Download/releases/latest/download/QR-Studio-iPhone.ipa)
+
 Al hacer clic, la descarga empieza sola: siempre es la **última versión**. Novedades y versiones
 anteriores: [todas las versiones](https://github.com/aloshkagarcia-designer/QR-Studio-Download/releases).
 
 > 🛡️ **La primera vez que lo abras, Windows o Mac mostrarán un aviso de seguridad.** Es normal y
 > se resuelve en un minuto: [mira qué hacer](#si-aparece-un-aviso-de-seguridad).
+>
+> 📱 **En el teléfono** se instala de otra forma: mira [Android](#en-android) e [iPhone](#en-iphone).
 
 | | Windows | Mac |
 |---|---|---|
@@ -38,8 +44,16 @@ anteriores: [todas las versiones](https://github.com/aloshkagarcia-designer/QR-S
 > esta Mac**. Junto a «Chip» debe decir **Apple**. Si dice «Intel», esta versión no funciona en
 > esa Mac.
 >
-> **¿iPhone o iPad?** No es posible: solo admiten apps de la App Store. Mira las
-> [preguntas frecuentes](#preguntas-frecuentes).
+
+| | Android | iPhone |
+|---|---|---|
+| **Sistema** | Android 7 o posterior | iOS 15 o posterior |
+| **Archivo** | `QR-Studio-Android.apk` | `QR-Studio-iPhone.ipa` (se instala desde una computadora) |
+| **Internet** | no hace falta | no hace falta |
+| **Precio** | gratis | gratis |
+
+La versión del teléfono crea, diseña, verifica y descarga códigos **estáticos** igual que la de
+computadora. No incluye QR dinámicos ni estadísticas.
 
 ---
 
@@ -81,6 +95,38 @@ No hay que instalar nada más: todo lo necesario va dentro del archivo.
    aplicación. **A partir de ahora se abre con doble clic, sin avisos.**
 
    <img src="assets/mac-ventana.png" alt="Ventana de QR Studio en Mac" width="380">
+
+### En Android
+
+1. En el teléfono, abre esta página y toca **⬇️ Descargar para Android**.
+2. Si Chrome pregunta si quieres conservar el archivo, toca **Descargar de todas formas**.
+3. Al terminar, toca **Abrir** (o búscalo en **Archivos → Descargas**).
+4. La primera vez, Android pide permiso para instalar apps desde Chrome: toca **Configuración**,
+   activa **Permitir de esta fuente** y vuelve atrás.
+5. Toca **Instalar**. Si aparece **Google Play Protect**, toca **Más detalles → Instalar de todas
+   formas**. (Avisa con cualquier app que no viene de Play Store.)
+6. Listo: QR Studio aparece entre tus apps. **Las actualizaciones se instalan igual, sin perder tus
+   códigos.**
+
+### En iPhone
+
+Apple solo permite instalar apps de la App Store. Mientras QR Studio llega a la App Store, se puede
+instalar **desde una computadora** con el programa gratuito **Sideloadly**, usando tu Apple ID:
+
+1. En tu computadora (Windows o Mac), descarga **Sideloadly** desde
+   [sideloadly.io](https://sideloadly.io). En Windows también necesitas **iTunes** e **iCloud**
+   descargados de la página de Apple (no de Microsoft Store).
+2. Descarga **⬇️ Descargar para iPhone** (el archivo `QR-Studio-iPhone.ipa`) en la computadora.
+3. Conecta el iPhone con el cable y, si lo pregunta, toca **Confiar** en el iPhone.
+4. Abre Sideloadly, arrastra el archivo `.ipa`, escribe tu **Apple ID** y pulsa **Start**.
+5. En el iPhone: **Ajustes → General → VPN y gestión de dispositivos** → toca tu Apple ID →
+   **Confiar**.
+6. Si iOS lo pide: **Ajustes → Privacidad y seguridad → Modo de desarrollador** → actívalo y
+   reinicia el iPhone.
+
+> ⏱️ **Importante:** con un Apple ID gratuito, Apple desactiva la app **cada 7 días**. Para
+> renovarla, conecta el iPhone y repite el paso 4 (tus códigos no se pierden). Haz de vez en cuando
+> **Ajustes → Descargar copia** en la app, por si acaso.
 
 ---
 
@@ -171,7 +217,7 @@ encuentra sola.
 ## Preguntas frecuentes
 
 **¿Mis datos se envían a internet?**
-No. Todo se guarda solo en tu computadora: en Windows, en `%LOCALAPPDATA%\QR Studio`; en Mac, en
+No. Todo se guarda solo en tu computadora o en tu teléfono: en Windows, en `%LOCALAPPDATA%\QR Studio`; en Mac, en
 `Librería/Application Support/QR Studio` de tu carpeta de inicio. QR Studio no tiene cuentas,
 publicidad ni seguimiento.
 
@@ -191,9 +237,14 @@ solo la primera vez. Los pasos están en [Si aparece un aviso de seguridad](#si-
 **¿Funciona en una Mac con procesador Intel?**
 No, esta versión es para Macs con chip de Apple (desde finales de 2020).
 
-**¿Funciona en iPhone o iPad?**
-No. iPhone y iPad solo permiten instalar aplicaciones desde la App Store. Para crear tus códigos
-usa una computadora con Windows o Mac; los códigos que crees se pueden escanear con cualquier teléfono.
+**¿Funciona en el teléfono?**
+Sí: hay versión para **Android** y para **iPhone** (mira [En Android](#en-android) y
+[En iPhone](#en-iphone)). Tus códigos se guardan solo en el teléfono; para pasarlos a otro, usa
+**Ajustes → Descargar copia** y recupérala en el teléfono nuevo.
+
+**¿Por qué en iPhone hay que renovarla cada 7 días?**
+Porque Apple solo permite apps permanentes si vienen de la App Store. Con Sideloadly y un Apple ID
+gratuito, Apple las desactiva a los 7 días; se renueva en un minuto conectando el iPhone.
 
 **La ventana dice que otro programa usa el puerto.**
 Reinicia la computadora y abre QR Studio de nuevo.

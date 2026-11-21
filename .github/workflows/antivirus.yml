@@ -49,15 +49,16 @@ jobs:
           "Microsoft Defender: sin amenazas en QR Studio para Windows"
 
   clamav:
-    name: ClamAV (Windows y Mac)
+    name: ClamAV (Windows, Mac, Android e iPhone)
     runs-on: ubuntu-latest
     steps:
       - name: Descargar como lo haría una persona y verificar
         run: |
           mkdir publicado && cd publicado
           for p in Windows Mac; do curl -sSfL -o "QR-Studio-$p.zip" "$BASE/QR-Studio-$p.zip"; done
+          for f in QR-Studio-Android.apk QR-Studio-iPhone.ipa; do curl -sSfL -o "$f" "$BASE/$f" || echo "Sin $f todavía"; done
           ls -la
-          sha256sum QR-Studio-*.zip
+          sha256sum QR-Studio-*
       - name: Instalar ClamAV y actualizar firmas
         run: |
           sudo apt-get update -qq
@@ -71,4 +72,4 @@ jobs:
           unzip -q publicado/QR-Studio-Windows.zip -d analizar/windows
           unzip -q publicado/QR-Studio-Mac.zip -d analizar/mac
           clamscan -r --infected --scan-archive=yes publicado analizar
-          echo "ClamAV: sin amenazas en las descargas de Windows y Mac"
+          echo "ClamAV: sin amenazas en las descargas (los .apk e .ipa se analizan por dentro)"

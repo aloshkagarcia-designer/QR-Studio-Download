@@ -1,11 +1,12 @@
 # Crea o completa la publicación (Release) de cada versión a partir de los ZIP de descargas/.
-# Los ZIP se construyen, prueban y auditan (Windows y Mac) en el repositorio privado de QR Studio.
+# Los ZIP se construyen, prueban y auditan (Windows y Mac) en el repositorio privado de QR Studio,
+# igual que las apps del teléfono (Android .apk e iPhone .ipa).
 name: Publicar versión
 
 on:
   push:
     branches: [main]
-    paths: ["descargas/*.zip", "notas/*.md"]
+    paths: ["descargas/*.zip", "descargas/*.apk", "descargas/*.ipa", "notas/*.md"]
   workflow_dispatch:
 
 permissions:
@@ -40,4 +41,23 @@ jobs:
             # Nombre estable para el enlace «última versión» (QR-Studio-Windows.zip / QR-Studio-Mac.zip).
             cp "$zip" "staging/QR-Studio-$platform.zip"
             gh release upload "$tag" "staging/QR-Studio-$platform.zip" "$zip" "$zip.sha256" --clobber
+          done
+
+      - name: Añadir las apps del teléfono a la última versión
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          shopt -s nullglob
+          files=(descargas/QR-Studio-Movil-*-Android.apk descargas/QR-Studio-Movil-*-iPhone.ipa)
+          [ ${#files[@]} -gt 0 ] || exit 0
+          tag=$(gh release view --json tagName -q .tagName)
+          mkdir -p staging
+          for f in "${files[@]}"; do
+            # Nombre estable para el enlace «última versión» (QR-Studio-Android.apk / QR-Studio-iPhone.ipa).
+            case "$f" in
+              *-Android.apk) stable=QR-Studio-Android.apk ;;
+              *-iPhone.ipa) stable=QR-Studio-iPhone.ipa ;;
+            esac
+            cp "$f" "staging/$stable"
+            gh release upload "$tag" "staging/$stable" "$f" "$f.sha256" --clobber
           done
